@@ -110,6 +110,9 @@ def index():
     expire_blacklist()
     return render_template('index.html')
 
+# gunicorn 실행 시에도 DB 초기화
+init_db()
+
 @app.route('/api/login', methods=['POST'])
 def api_login():
     d = request.json; lid = d.get('id',''); pw = d.get('pw','')
